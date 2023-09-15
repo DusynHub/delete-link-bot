@@ -1,0 +1,50 @@
+<configuration>
+
+    <property name="HOME_LOG" value="/var/log/delete-link-bot/dlb.log"/>
+
+
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+
+<!--            <Pattern>%d %-4relative [%thread] %-5level %logger{35} - %msg%n</Pattern>-->
+            <Pattern> %d{HH:mm:ss.SSS} %magenta([%thread]) %cyan([%level]) %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+
+
+    <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${HOME_LOG}</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/var/log/delete-link-bot/dlb.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+            <totalSizeCap>1GB</totalSizeCap>
+            <!-- 60 days to keep -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="DeleteLinkBot" level="debug" additivity="false">
+        <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+    <root level="info">
+        <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+</configuration>

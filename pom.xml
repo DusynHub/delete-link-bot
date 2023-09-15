@@ -13,8 +13,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>delete-link-bot</name>
     <description>Telegram bot to delete messages with links</description>
+    <packaging>jar</packaging>
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
         <telegram.version>6.1.0</telegram.version>
         <spring.version>2.7.15</spring.version>
         <junit.jupiter.params.version>5.9.2</junit.jupiter.params.version>
