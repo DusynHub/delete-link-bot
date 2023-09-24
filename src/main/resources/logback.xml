@@ -2,7 +2,6 @@
 
     <property name="HOME_LOG" value="/var/log/delete-link-bot/dlb.log"/>
 
-
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>UTF-8</charset>
@@ -11,8 +10,6 @@
             <Pattern> %d{HH:mm:ss.SSS} %magenta([%thread]) %cyan([%level]) %logger{36} - %msg%n</Pattern>
         </encoder>
     </appender>
-
-
 
     <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${HOME_LOG}</file>
