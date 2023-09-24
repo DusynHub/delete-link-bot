@@ -49,7 +49,8 @@ Following texts will be detected as valid url and messages containing them will 
 * разъяснены новые на сайте объясняем.рф
 
 ## How to work
-__1 This version of the bot is for running using docker-compose and your own Telegram bot data, namely the name and token.__
+__1 This version of the bot is for running using docker-compose and your own Telegram bot data, namely the name and token.
+To use docker compose you need JDK and Maven on machine__
 
 __2 Get the bot name and bot token from botfather in the Telegram app.__
 ![img.png](img.png)
@@ -57,7 +58,11 @@ __2 Get the bot name and bot token from botfather in the Telegram app.__
 
 __3 Download the project from [GitHub](https://github.com) and unzip it into the necessary folder.__
 
-__4 In the command line, go to the directory with the unzipped project. You should be in a folder with the docker-compose.yaml file.__
+__4 In the command line, go to the directory with the unzipped project. You should be in a folder with the docker-compose.yaml file.
+run maven command in CLI__
+```bash
+mvn package
+```
 
 __5 Insert your data instead of \<BOT NAME> and \<BOT TOKEN> into the command:__
 ```bash
