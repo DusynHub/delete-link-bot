@@ -55,29 +55,21 @@ To use docker compose you need JDK and Maven on machine__
 __2 Get the bot name and bot token from botfather in the Telegram app.__
 ![img.png](img.png)
 
+__3 Download the project from DockerHub masfujdocker/deletelinkbot:v1.1__
 
-__3 Download the project from [GitHub](https://github.com) and unzip it into the necessary folder.__
-
-__4 In the command line, go to the directory with the unzipped project. You should be in a folder with the docker-compose.yaml file.
-run maven command in CLI__
+__4 In CLI run command. Insert your data instead of \<BOT NAME> and \<BOT TOKEN> into the command:__
 ```bash
-mvn package
-```
-
-__5 Insert your data instead of \<BOT NAME> and \<BOT TOKEN> into the command:__
-```bash
-docker compose run -e “BOT_NAME=<BOT NAME>” -e “BOT_TOKEN=<BOT TOKEN>” delete-link-service python console.py__
+docker run -e “BOT_NAME=<BOT NAME>” -e “BOT_TOKEN=<BOT TOKEN>” masfujdocker/deletelinkbot:v1.1 python console.py__
 ```
 Run command in the directory with the unzipped project
 ```bash
 example command:
 
-docker compose run  -e "BOT_NAME=somebot" -e "BOT_TOKEN=6025044839:AAHlPLJzljjDQ2ggr1qhsBAldQCJe3SnhJI" delete-link-service python console.py
+docker run  -e "BOT_NAME=somebot" -e "BOT_TOKEN=6025044839:AAHlPLJzljjDQ2ggr1qhsBAldQCJe3SnhJI" masfujdocker/deletelinkbot:v1.1 python console.py
 ```
-![img_1.png](img_1.png)
-__6 Now bot is working. Add your bot by name in a supergroup in Telegram and give him administrator role with a permission to delete messages.__
+__5 Now bot is working. Add your bot by name in a supergroup in Telegram and give him administrator role with a permission to delete messages.__
 
-__7 Delete link bot logs will be saved in file:__
+__6 Delete link bot logs will be saved in file:__
 ```bash
-<path_to_directory>/delete-link-bot/dlb-log-win/dlb.log
+<root>/var/log/dlb-log-win/dlb.log
 ```

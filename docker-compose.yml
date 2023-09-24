@@ -10,4 +10,4 @@ services:
     environment:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     volumes:
-      - /dlb-log-win:/var/log/delete-link-bot/:testlog
+      - /var/log/dlb-log-win:/var/log/delete-link-bot/:testlog
