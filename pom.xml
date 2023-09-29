@@ -10,7 +10,7 @@
     </parent>
     <groupId>dev.vita</groupId>
     <artifactId>delete-link-bot</artifactId>
-    <version>v1.1</version>
+    <version>v1.2</version>
     <name>delete-link-bot</name>
     <description>Telegram bot to delete messages with links</description>
     <packaging>jar</packaging>

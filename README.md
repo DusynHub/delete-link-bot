@@ -49,30 +49,35 @@ Following texts will be detected as valid url and messages containing them will 
 * разъяснены новые на сайте объясняем.рф
 
 ## How to work
-__1 This version of the bot is for running using docker-compose and your own Telegram bot data, namely the name and token.__
+__1 This version of the bot is for running using your own Telegram bot data, namely the name and token.__
 
-__2 Get the bot name and bot token from botfather in the Telegram app.__
+__2 This is not release. You need to make jar file from this source code__
+
+__3 To do this you need maven installed on your pc. You can use for example [instruction](https://byanr.com/installation-guides/maven-windows-11/)__
+
+__4 Run in the project root directory command ```mvn clean``` and after ```mvn package```__
+```bash
+    mvn clean
+```
 ![img.png](img.png)
 
-
-__3 Download the project from [GitHub](https://github.com) and unzip it into the necessary folder.__
-
-__4 In the command line, go to the directory with the unzipped project. You should be in a folder with the docker-compose.yaml file.__
-
-__5 Insert your data instead of \<BOT NAME> and \<BOT TOKEN> into the command:__
 ```bash
-docker compose run -e “BOT_NAME=<BOT NAME>” -e “BOT_TOKEN=<BOT TOKEN>” delete-link-service python console.py__
-```
-Run command in the directory with the unzipped project
-```bash
-example command:
-
-docker compose run  -e "BOT_NAME=somebot" -e "BOT_TOKEN=6025044839:AAHlPLJzljjDQ2ggr1qhsBAldQCJe3SnhJI" delete-link-service python console.py
+    mvn package
 ```
 ![img_1.png](img_1.png)
-__6 Now bot is working. Add your bot by name in a supergroup in Telegram and give him administrator role with a permission to delete messages.__
 
-__7 Delete link bot logs will be saved in file:__
+__5 Then in *\<ROOT DIRECTORY\>/target* run command:__
 ```bash
-<path_to_directory>/delete-link-bot/dlb-log-win/dlb.log
+java -jar delete-link-bot-v1.2.jar --bot.name=<YOUR BOT NAME> --bot.token=<YOUR BOT TOKEN>
 ```
+__after success you will see this result__
+
+![img_3.png](img_3.png)
+
+__6 Your bot name and token you get from botfathe in telegram__
+![img_2.png](img_2.png)
+
+__7 Bot Logs you can find here: \<YOUR PC ROOT DIRECTORY\>\var\log\delete-link-bot__
+![img_4.png](img_4.png)
+
+__8 After bot successfully had started you must add bot to ypur group and give him admin with permission to delete messages__

@@ -68,6 +68,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             Integer msgId = msg.getMessageId();
             Long userId = msg.getFrom().getId();
             Set<Long> admins = new HashSet<>(0);
+
             if(msg.isSuperGroupMessage() || msg.isGroupMessage() || msg.isChannelMessage()){
                 admins = getChatAdministrators(chatId);
             }
@@ -125,6 +126,13 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
+
+    /**
+     Проверяет, содержит ли заданный текст какие-либо URL-адреса.
+
+     @param text текст для проверки
+     @return true, если текст содержит хотя бы один URL-адрес, иначе false
+     */
     public boolean hasUrlInText(String text) {
         UrlDetector parser = new UrlDetector(text, UrlDetectorOptions.Default);
         List<Url> found = parser.detect();
