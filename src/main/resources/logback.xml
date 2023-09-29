@@ -1,6 +1,7 @@
 <configuration>
 
-    <property name="HOME_LOG" value="/var/log/delete-link-bot/dlb.log"/>
+    <property name="HOME_LOG" value="/var/log/delete-link-bot/"/>
+    <timestamp key="myTimestamp" datePattern="yyyy-MM-dd'_'HH-mm-ss.SSS"/>
 
 
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,7 +14,10 @@
 
 
     <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${HOME_LOG}</file>
+
+        <file>${HOME_LOG}/dlb_${myTimestamp}.log</file>
+
+        <!--        <file>${HOME_LOG}</file>-->
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>/var/log/delete-link-bot/dlb.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>

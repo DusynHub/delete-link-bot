@@ -24,6 +24,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -66,7 +67,10 @@ public class TelegramBot extends TelegramLongPollingBot {
             Long chatId = msg.getChatId();
             Integer msgId = msg.getMessageId();
             Long userId = msg.getFrom().getId();
-            Set<Long> admins = getChatAdministrators(chatId);
+            Set<Long> admins = new HashSet<>(0);
+            if(msg.isSuperGroupMessage() || msg.isGroupMessage() || msg.isChannelMessage()){
+                admins = getChatAdministrators(chatId);
+            }
 
 
             if (msg.hasText()) {
@@ -74,7 +78,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                 List<String> urls = getUrlsFromLinksInMessage(msg);
 
                 if(text.startsWith("/start")){
-                    handleStart(msg);
+                    if(msg.isUserMessage()){
+                        handleStart(msg);
+                    }
                     return;
                 }
 
